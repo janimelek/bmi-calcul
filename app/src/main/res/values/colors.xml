@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core App Colors -->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBackground">#F5F5F5</color>
+    <color name="colorCardBackground">#FFFFFF</color>
+    <color name="colorResultNormal">#4CAF50</color>
+    <color name="colorResultWarning">#FF9800</color>
+    <color name="colorResultObese">#F44336</color>
+    <color name="colorTextPrimary">#212121</color>
+
+    <!-- Aliases for backwards compatibility with existing layouts -->
+    <color name="background">@color/colorBackground</color>
+    <color name="surface">@color/colorCardBackground</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="onSurface">@color/colorTextPrimary</color>
+    <color name="hint">#9E9E9E</color>
+    <color name="statusBarColor">@color/colorPrimaryDark</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="bmiUnderweight">@color/colorResultWarning</color>
+    <color name="bmiNormal">@color/colorResultNormal</color>
+    <color name="bmiOverweight">@color/colorResultWarning</color>
+    <color name="bmiObese">@color/colorResultObese</color>
+</resources>

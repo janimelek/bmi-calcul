@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml — Splash screen for the BMI Calculator app.
+
+    Root: ConstraintLayout, full screen, background = @color/colorPrimary.
+    Contents (all centred horizontally):
+      • ImageView       — health / person icon, 120 × 120 dp, white tint
+      • TextView (title)  — "BMI Calculator",      28 sp bold white
+      • TextView (sub)  — "Know your Body Mass Index", 16 sp white
+      • Button (bottom) — "Get Started", white rounded background, text = colorPrimary
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/splashRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <!-- ── Health / person icon ─────────────────────────────────────── -->
+    <ImageView
+        android:id="@+id/ivHealthIcon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/ic_health"
+        android:contentDescription="@string/cd_health_icon"
+        android:tint="@color/onPrimary"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── App name ──────────────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/app_name"
+        android:textColor="@color/onPrimary"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.03"
+        app:layout_constraintTop_toBottomOf="@id/ivHealthIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── Tagline ────────────────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tvTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/splash_tagline"
+        android:textColor="@color/onPrimaryMuted"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-light"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── "Get Started" button ──────────────────────────────────────── -->
+    <!--
+        onClick is intentionally NOT set here.
+        The click listener is attached in MainActivity.java.
+    -->
+    <Button
+        android:id="@+id/btnGetStarted"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/btn_get_started"
+        android:text="@string/btn_get_started"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.05"
+        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

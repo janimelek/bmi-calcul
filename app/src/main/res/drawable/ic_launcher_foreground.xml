@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Foreground layer for the adaptive launcher icon — a simple "B" glyph.
+    Android Studio's Image Asset Studio can replace this with a proper icon.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- White "B" letter representing BMI -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,26 L38,82 L62,82
+                          C74,82 82,75 82,65
+                          C82,58 78,52 72,50
+                          C77,48 80,43 80,36
+                          C80,30 75,26 64,26 Z
+                          M50,36 L62,36
+                          C67,36 70,39 70,43
+                          C70,47 67,50 62,50 L50,50 Z
+                          M50,60 L62,60
+                          C68,60 71,63 71,67
+                          C71,71 68,72 62,72 L50,72 Z" />
+</vector>

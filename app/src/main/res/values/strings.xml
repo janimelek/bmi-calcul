@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BMI Calculator</string>
+    <string name="label_enter_details">Enter Your Details</string>
+    <string name="label_height">Height</string>
+    <string name="label_weight_section">Weight (kg)</string>
+    <string name="label_age">Age</string>
+    <string name="label_male">Male</string>
+    <string name="label_female">Female</string>
+    <string name="btn_calculate_bmi">Calculate BMI</string>
+    <string name="result_toolbar_title">Your Result</string>
+    <string name="detail_bmi_value">BMI Value</string>
+    <string name="detail_category">Category</string>
+    <string name="detail_healthy_range">Healthy BMI Range</string>
+    <string name="detail_bmi_prime">BMI Prime</string>
+    <string name="btn_recalculate">Recalculate</string>
+    <string name="btn_share_result">Share Result</string>
+    <string name="btn_get_started">Get Started</string>
+    <string name="splash_tagline">Know your Body Mass Index</string>
+
+    <string name="tip_normal">Congratulations! Keep up the good work by maintaining your healthy lifestyle, balanced diet, and regular physical activity.</string>
+    <string name="tip_underweight">Consult a nutritionist and focus on calorie-dense whole foods to reach a healthy weight safely.</string>
+    <string name="tip_overweight">Consider incorporating regular aerobic exercise and reducing your intake of processed foods to gradually reach a healthier weight.</string>
+    <string name="tip_obese">It is strongly recommended to seek medical advice. A healthcare professional can help you start a personalized plan, potentially beginning with low-impact exercise.</string>
+
+    <!-- Compatibility strings for the existing layout code -->
+    <string name="result_health_tip_title">💡 Health Tip</string>
+    <string name="cd_decrease">Decrease</string>
+    <string name="cd_increase">Increase</string>
+    <string name="cd_male">Male</string>
+    <string name="cd_female">Female</string>
+    <string name="result_back_desc">Back</string>
+    <string name="share_subject">My BMI Result</string>
+    <string name="share_chooser_title">Share via</string>
+    <string name="share_footer">Calculated with BMI Calculator</string>
+</resources>

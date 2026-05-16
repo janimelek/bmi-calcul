@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_result.xml — BMI result screen.
+
+    Root: ConstraintLayout (as required).
+    Structure:
+      ┌─ Toolbar  ────────────────────────────────── (top, back arrow)
+      └─ ScrollView (fills remaining space)
+           └─ LinearLayout (vertical)
+                ├─ CardView (circular — BMI value + category label)
+                ├─ CardView (detail rows: BMI Value, Category, Range, BMI Prime)
+                ├─ TextView (health tip — set programmatically)
+                └─ LinearLayout (horizontal buttons: Recalculate | Share Result)
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/resultRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- ── Toolbar ─────────────────────────────────────────────────── -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/result_toolbar_title"
+        app:titleTextColor="@color/onPrimary"
+        app:navigationContentDescription="@string/result_back_desc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── Scrollable content area ─────────────────────────────────── -->
+    <ScrollView
+        android:id="@+id/resultScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="center_horizontal">
+
+            <!-- ══ 1. CIRCULAR BMI DISPLAY CARD ═════════════════════ -->
+            <!--
+                CardView with equal width/height + cardCornerRadius = half size
+                gives a perfect circle. Background colour is set in Java via
+                cvBmiCircle.setCardBackgroundColor().
+            -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvBmiCircle"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="100dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/bmiNormal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <!-- Large BMI number -->
+                    <TextView
+                        android:id="@+id/tvBmiNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="@color/onPrimary"
+                        android:textSize="56sp"
+                        android:textStyle="bold"
+                        android:includeFontPadding="false" />
+
+                    <!-- Category label inside the circle -->
+                    <TextView
+                        android:id="@+id/tvBmiCategoryCircle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="--"
+                        android:textColor="@color/onPrimary"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:paddingHorizontal="8dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ 2. DETAIL ROWS CARD ═══════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <!-- Row: BMI Value -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/detail_bmi_value"
+                            android:textColor="@color/hint"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tvDetailBmiValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/onSurface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:layout_marginHorizontal="14dp"
+                        android:background="@color/divider" />
+
+                    <!-- Row: Category -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/detail_category"
+                            android:textColor="@color/hint"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tvDetailCategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/onSurface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:layout_marginHorizontal="14dp"
+                        android:background="@color/divider" />
+
+                    <!-- Row: Healthy BMI range -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/detail_healthy_range"
+                            android:textColor="@color/hint"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tvDetailRange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="18.5 – 24.9"
+                            android:textColor="@color/onSurface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:layout_marginHorizontal="14dp"
+                        android:background="@color/divider" />
+
+                    <!-- Row: BMI Prime -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/detail_bmi_prime"
+                            android:textColor="@color/hint"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tvDetailBmiPrime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/onSurface"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ 3. HEALTH TIP ══════════════════════════════════════ -->
+            <!--
+                Text content is set programmatically from ResultActivity
+                based on the calculated BMI category.
+            -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/result_health_tip_title"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHealthTip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/onSurface"
+                        android:textSize="14sp"
+                        android:lineSpacingMultiplier="1.5" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ 4. ACTION BUTTONS ═════════════════════════════════ -->
+            <!--
+                Recalculate — calls finish() to return to InputActivity.
+                Share Result — triggers a share Intent (logic in Java).
+                No onClick set in XML.
+            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnRecalculate"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_btn_outline"
+                    android:text="@string/btn_recalculate"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:stateListAnimator="@null" />
+
+                <Button
+                    android:id="@+id/btnShareResult"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_calculate_bmi"
+                    android:text="@string/btn_share_result"
+                    android:textColor="@color/onPrimary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:stateListAnimator="@null" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

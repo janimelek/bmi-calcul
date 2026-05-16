@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Circular background for the BMI display card.
+     The fill color is overridden programmatically in ResultActivity
+     via CardView.setCardBackgroundColor() based on BMI category. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#4CAF50" />   <!-- placeholder; set at runtime -->
+</shape>

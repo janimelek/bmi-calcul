@@ -15,6 +15,7 @@
     <color name="background">@color/colorBackground</color>
     <color name="surface">@color/colorCardBackground</color>
     <color name="onPrimary">#FFFFFF</color>
+    <color name="onPrimaryMuted">#B3D1F7</color>
     <color name="onSurface">@color/colorTextPrimary</color>
     <color name="hint">#9E9E9E</color>
     <color name="statusBarColor">@color/colorPrimaryDark</color>
